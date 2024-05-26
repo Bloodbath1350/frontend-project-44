@@ -1,16 +1,21 @@
-import globals from "globals";
+const description = 'Find the greatest common divisor of given numbers.';
 
-import path from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-import pluginJs from "@eslint/js";
+const task = () => {
+  const num1 = Math.round(Math.random() * 100);
+  const num2 = Math.round(Math.random() * 100);
 
-// mimic CommonJS variables -- not needed if using CommonJS
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({baseDirectory: __dirname, recommendedConfig: pluginJs.configs.recommended});
+  let a = num1;
+  let b = num2;
+  while (a !== 0 && b !== 0) {
+    if (a >= b) {
+      a -= b;
+    } else {
+      b -= a;
+    }
+  }
+  const answer = `${a + b}`;
 
-export default [
-  {languageOptions: { globals: globals.node }},
-  ...compat.extends("airbnb-base"),
-];
+  return [`${num1} ${num2}`, answer];
+};
+
+export{description,task};
