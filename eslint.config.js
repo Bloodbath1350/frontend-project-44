@@ -1,21 +1,12 @@
-const description = 'Find the greatest common divisor of given numbers.';
+import pluginJs from "@eslint/js";
 
-const task = () => {
-  const num1 = Math.round(Math.random() * 100);
-  const num2 = Math.round(Math.random() * 100);
 
-  let a = num1;
-  let b = num2;
-  while (a !== 0 && b !== 0) {
-    if (a >= b) {
-      a -= b;
-    } else {
-      b -= a;
+export default [
+  pluginJs.configs.recommended,
+  {
+    rules: {
+      "no-console": "off",
+      "no-undef": "off"
     }
   }
-  const answer = `${a + b}`;
-
-  return [`${num1} ${num2}`, answer];
-};
-
-export{description,task};
+];
